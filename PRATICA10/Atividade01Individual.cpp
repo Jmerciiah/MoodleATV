@@ -1,55 +1,41 @@
 #include <iostream>
-#include <vector>
 #include <string>
-#include <iomanip> 
+#include <vector>
 
 using namespace std;
 
-int main() {
-    try {
+int main(){
+
+    int qtdalunos;
+    cout << "Digite a quantidade de alunos: " << endl;  
+    cin >> qtdalunos;
+   
+    vector<string> nomes = {};
+    vector<float> nota1, nota2;
+
+    cin.ignore();
+    
+    for (int i=0; i < qtdalunos; i++){
+        string nomedoaluno;
+        float n1, n2;
+
+        cout << "Digite o nome do aluno: " << endl;
+        getline (cin, nomedoaluno);
+        nomes.push_back(nomedoaluno);
         
-        int N;
-        cout << "Informe o limite de alunos (N): ";
-        cin >> N;
-
-        if (N <= 0) {
-            cout << "O limite de alunos deve ser um número positivo." << endl;
-            return 1; 
-        }
-
+        cout << "Digite a nota 1 do aluno " << nomedoaluno << ":" << endl;
+        cin >> n1;
+        nota1.push_back(n1);
         
-        vector<string> nomes;
-        vector<vector<float>> notas;
+        cout << "Digite a nota 2 do aluno " << nomedoaluno << ":" << endl;
+        cin >> n2;
+        nota2.push_back(n2);
 
-        
-        for (int i = 0; i < N; ++i) {
-            string nome;
-            cout << "Digite o nome do aluno " << i + 1 << ": ";
-            cin.ignore(); 
-            getline(cin, nome);
+        cin.ignore();
 
-            float nota1, nota2;
-            cout << "Digite a primeira nota do aluno " << i + 1 << ": ";
-            cin >> nota1;
-            cout << "Digite a segunda nota do aluno " << i + 1 << ": ";
-            cin >> nota2;
-
-            
-            nomes.push_back(nome);
-            notas.push_back({nota1, nota2});
-        }
-
-        
-        cout << "\nNomes e médias dos alunos:" << endl;
-        for (int i = 0; i < N; ++i) {
-            float media = (notas[i][0] + notas[i][1]) / 2.0;
-            cout << "Aluno " << i + 1 << ": " << nomes[i] << " - Média: " << fixed << setprecision(2) << media << endl;
-        }
-
-    } catch (...) {
-        cout << "Ocorreu um erro inesperado." << endl;
-        return 1;
     }
 
-    return 0; 
+    //cout << nomes.end();
+      
+    return 0;
 }
